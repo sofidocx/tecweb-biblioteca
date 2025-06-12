@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { LivroProvider } from './context/LivroContext'
+import Cadastro from './pages/Cadastro'
+import Lista from './pages/Lista'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <LivroProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Lista />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+        </Routes>
+      </Router>
+    </LivroProvider>
+  )
 }
 
-export default App;
+export default App
